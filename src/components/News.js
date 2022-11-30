@@ -1,0 +1,349 @@
+import React, { Component } from 'react'
+import NewsItem from './NewsItem'
+import Loader from './Loader';
+export class News extends Component {
+    articles = [
+        {
+            "source": {
+                "id": "usa-today",
+                "name": "USA Today"
+            },
+            "author": "Kasey Caminiti, Daniel Donabedian, Elsie Boskamp, Jon Winkler, Nusrat Sultana",
+            "title": "Early Black Friday: 135+ Thanksgiving deals at Amazon, Target and more - USA TODAY",
+            "description": "Whether you want to save on tech, furniture, appliances or fashion, Black Friday 2022 is here with the best deals of the year.",
+            "url": "https://www.usatoday.com/story/money/reviewed/2022/11/24/black-friday-2022-deals/10765203002/",
+            "urlToImage": "https://www.gannett-cdn.com/presto/2022/11/23/USAT/bef9a80b-1ac1-40ba-b2b5-4387fda06639-Black_Friday_USAT_MainHero3.png?crop=2987,1681,x6,y0&width=2987&height=1681&format=pjpg&auto=webp",
+            "publishedAt": "2022-11-25T00:41:09Z",
+            "content": "Recommendations are independently chosen by Revieweds editors. Purchases you make through our links may earn us and our publishing partners a commission.\r\nUpdated 7:52 PM EST: We're tracking all the … [+11308 chars]"
+        },
+        {
+            "source": {
+                "id": null,
+                "name": "Yahoo Entertainment"
+            },
+            "author": "Yahoo Sports Staff",
+            "title": "NFL Thanksgiving Day 2022 live tracker: Cowboys host Giants in huge NFC East showdown - Yahoo Sports",
+            "description": "Follow all the action right here with Yahoo Sports.",
+            "url": "https://sports.yahoo.com/nfl-thanksgiving-day-2022-live-inactives-scores-news-highlights-dallas-cowboys-new-york-giants-200006549.html",
+            "urlToImage": "https://s.yimg.com/ny/api/res/1.2/o.Aafuxn9MfFxzvGpK9Z4Q--/YXBwaWQ9aGlnaGxhbmRlcjt3PTEyMDA7aD04MDA-/https://s.yimg.com/os/creatr-uploaded-images/2022-11/d7750a10-6c3d-11ed-94fb-aa48b2d99b89",
+            "publishedAt": "2022-11-25T00:31:00Z",
+            "content": "Yahoo Fantasy Football Forecast\r\nAndy Behrens, Dalton Del Don, Matt Harmon, Liz Loza, Scott Pianowski"
+        },
+        {
+            "source": {
+                "id": "associated-press",
+                "name": "Associated Press"
+            },
+            "author": "Darlene Superville",
+            "title": "Biden brings Thanksgiving pies to Nantucket first {/* IMPORTANT: */}responders - The Associated Press - en Español",
+            "description": "NANTUCKET, Mass. (AP) — President Joe Biden  on Thursday delivered at least half a dozen pumpkin pies to Massachusetts firefighters during a Thanksgiving Day show of appreciation and his toddler grandson walked away with a red fire hat topping his blond curls.",
+            "url": "https://apnews.com/article/biden-massachusetts-holidays-thanksgiving-7dea2cb8de7321b180b2581592e61214",
+            "urlToImage": "https://storage.googleapis.com/afs-prod/media/c2bd0f88109e4b8c9bf4ed55319a455d/3000.jpeg",
+            "publishedAt": "2022-11-25T00:03:53Z",
+            "content": "NANTUCKET, Mass. (AP) President Joe Biden on Thursday delivered at least half a dozen pumpkin pies to Massachusetts firefighters during a Thanksgiving Day show of appreciation and his toddler grandso… [+1903 chars]"
+        },
+        {
+            "source": {
+                "id": "cbs-news",
+                "name": "CBS News"
+            },
+            "author": "Tucker Reals, Faris Tanyos, Alex Sundby",
+            "title": "Walmart shooting: Six people killed by manager at Chesapeake, Virginia, store; suspect also dead - CBS News",
+            "description": "Walmart identified the gunman as an \"overnight team lead\" who started working for the company in 2010.",
+            "url": "https://www.cbsnews.com/live-updates/chesapeake-virginia-walmart-shooting/",
+            "urlToImage": "https://assets2.cbsnewsstatic.com/hub/i/r/2022/11/23/4e64be35-aefb-4c6b-b455-d6edac4d9c7d/thumbnail/1200x630/3f9b7e6fccf6bb70488b6924e952a1ef/ap22327457355650.jpg",
+            "publishedAt": "2022-11-24T23:56:00Z",
+            "content": "A manager at a Walmart store in Chesapeake, Virginia, opened fire inside the store Tuesday evening, killing six people and hurting at least six more at the retail outlet before turning the gun on him… [+8358 chars]"
+        },
+        {
+            "source": {
+                "id": "al-jazeera-english",
+                "name": "Al Jazeera English"
+            },
+            "author": "Al Jazeera",
+            "title": "Ukraine battles to restore power as millions face blackouts - Al Jazeera English",
+            "description": "With temperatures falling below zero, authorities struggle to restore power and water as millions cut off from grid.",
+            "url": "https://www.aljazeera.com/news/2022/11/24/ukraine-battles-to-restore-power-after-russia-damages-grid",
+            "urlToImage": "https://www.aljazeera.com/wp-content/uploads/2022/11/000_32T22HQ.jpg?resize=1920%2C1440",
+            "publishedAt": "2022-11-24T22:41:12Z",
+            "content": "Ukraine has been battling to reconnect water and electricity services to millions of people after a barrage of Russian missiles and drones hit energy infrastructure on Wednesday, leaving nearly 80 pe… [+4553 chars]"
+        },
+        {
+            "source": {
+                "id": "the-washington-post",
+                "name": "The Washington Post"
+            },
+            "author": "Taylor Lorenz",
+            "title": "Musk will restore Twitter accounts banned for harassment, misinformation - The Washington Post",
+            "description": "A Twitter poll posted by Elon Musk shows 72 percent support granting “general amnesty” to accounts suspended for harassment, abuse and misinformation.",
+            "url": "https://www.washingtonpost.com/technology/2022/11/24/twitter-musk-reverses-suspensions/",
+            "urlToImage": "https://www.washingtonpost.com/wp-apps/imrs.php?src=https://arc-anglerfish-washpost-prod-washpost.s3.amazonaws.com/public/QB2T7FT2RJSQ6272HFYM5UL56A.jpg&w=1440",
+            "publishedAt": "2022-11-24T22:11:28Z",
+            "content": "Comment on this story\r\nElon Musk plans to reinstate nearly all previously banned Twitter accounts to the alarm of activists and online trust and safety experts.\r\nAfter posting a Twitter poll asking, … [+8209 chars]"
+        },
+        {
+            "source": {
+                "id": null,
+                "name": "ESPN"
+            },
+            "author": "Mark Ogden",
+            "title": "Brazil's Neymar in tears on bench after right ankle injury - ESPN",
+            "description": "Neymar was pictured in tears on the Brazil bench after leaving his team's 2-0 win over Serbia to begin their World Cup campaign in Qatar.",
+            "url": "https://www.espn.com/soccer/brazil-bra/story/4812988/brazils-neymar-in-tears-on-bench-after-leaving-serbia-win",
+            "urlToImage": "https://a4.espncdn.com/combiner/i?img=%2Fphoto%2F2022%2F1124%2Fr1096374_1296x729_16%2D9.jpg",
+            "publishedAt": "2022-11-24T21:18:08Z",
+            "content": "LUSAIL, Qatar -- Neymar was pictured in tears on the Brazil bench after leaving his team's 2-0 win over Serbia to begin their World Cup campaign in Qatar on Thursday, after picking up an injury to hi… [+3434 chars]"
+        },
+        {
+            "source": {
+                "id": null,
+                "name": "YouTube"
+            },
+            "author": null,
+            "title": "Weather Now: Dry Rest of Thanksgiving; Tracking Some Showers For Black Friday - WPRI",
+            "description": "Weather Now: Dry Rest of Thanksgiving; Tracking Some Showers For Black FridayWPRI 12's Pinpoint Doppler Weather service for Rhode Island and Southeastern Mass.",
+            "url": "https://www.youtube.com/watch?v=0DfqdA8uK3M",
+            "urlToImage": "https://i.ytimg.com/vi/0DfqdA8uK3M/hqdefault.jpg",
+            "publishedAt": "2022-11-24T21:08:25Z",
+            "content": null
+        },
+        {
+            "source": {
+                "id": null,
+                "name": "The Guardian"
+            },
+            "author": "Guardian staff reporter",
+            "title": "Emperor Charles V's secret code cracked after five centuries - The Guardian",
+            "description": "Letter from 1547 reveals Spanish king’s fears of a French assassination plot against him",
+            "url": "https://www.theguardian.com/world/2022/nov/24/emperor-charles-vs-secret-code-cracked-after-five-centuries",
+            "urlToImage": "https://i.guim.co.uk/img/media/b9afbb3d224326bd6301a27e0a92611de8fa08d9/0_179_4440_2665/master/4440.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctZGVmYXVsdC5wbmc&enable=upscale&s=6c5f2c8c8c8e01e6c5a9d9a7ace5f734",
+            "publishedAt": "2022-11-24T20:12:00Z",
+            "content": "A team of researchers have cracked a five century-old code that reveals a rumoured French plot to kill the Roman emperor and king of Spain Charles V.\r\nCharles was one of the most powerful men of the … [+2820 chars]"
+        },
+        {
+            "source": {
+                "id": null,
+                "name": "YouTube"
+            },
+            "author": null,
+            "title": "Warnock's Campaign Is 'Fairly Optimistic That Things Are Tilting Their Way.' - MSNBC",
+            "description": "The Georgia Supreme Court has ruled that early voting in the Senate runoff can start as soon as this Saturday. Atlanta Journal Constitution Political Reporte...",
+            "url": "https://www.youtube.com/watch?v=tRDfaSiY6_I",
+            "urlToImage": "https://i.ytimg.com/vi/tRDfaSiY6_I/maxresdefault.jpg",
+            "publishedAt": "2022-11-24T19:29:41Z",
+            "content": null
+        },
+        {
+            "source": {
+                "id": "google-news",
+                "name": "Google News"
+            },
+            "author": null,
+            "title": "A multivalent nucleoside-modified mRNA vaccine against all known influenza virus subtypes - Science",
+            "description": null,
+            "url": "https://news.google.com/__i/rss/rd/articles/CBMiM2h0dHBzOi8vd3d3LnNjaWVuY2Uub3JnL2RvaS8xMC4xMTI2L3NjaWVuY2UuYWJtMDI3MdIBAA?oc=5",
+            "urlToImage": null,
+            "publishedAt": "2022-11-24T19:12:33Z",
+            "content": null
+        },
+        {
+            "source": {
+                "id": null,
+                "name": "The Guardian"
+            },
+            "author": "Verna Yu",
+            "title": "China imposes new lockdowns as local Covid cases hit record high - The Guardian",
+            "description": "Country reports 31,444 new locally transmitted cases, the highest daily figure since pandemic began",
+            "url": "https://www.theguardian.com/world/2022/nov/24/china-imposes-new-lockdowns-as-local-covid-cases-hit-record-high",
+            "urlToImage": "https://i.guim.co.uk/img/media/8c22a5d661c4a5eee38f667f1e3456df22480a61/0_223_6000_3600/master/6000.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctZGVmYXVsdC5wbmc&enable=upscale&s=caf6766253d2fe36312211cc77e3025a",
+            "publishedAt": "2022-11-24T18:29:00Z",
+            "content": "China has imposed a fresh series of Covid lockdowns, including in a city where workers at the worlds largest iPhone factory clashed with police this week, as a record daily high in coronavirus cases … [+4464 chars]"
+        },
+        {
+            "source": {
+                "id": null,
+                "name": "NDTV News"
+            },
+            "author": null,
+            "title": "NASA's Artemis I Mission Captures Closest Images Of Surface Of The Moon - NDTV",
+            "description": "The photo was taken using Orion's optical navigational system.",
+            "url": "https://www.ndtv.com/world-news/nasas-artemis-i-mission-captures-closest-images-of-surface-of-the-moon-3551305",
+            "urlToImage": "https://c.ndtvimg.com/2022-11/iijcuvr_nasa-shared-four-images-of-different-areas-of-the-moon_625x300_24_November_22.jpg",
+            "publishedAt": "2022-11-24T18:20:17Z",
+            "content": "NASA shared four images of different areas of the moon.\r\nNASA's Orion Capsule has sent back spectacular images of the moon. The spacecraft swept 130km (80 miles) above the lunar surface during the Ar… [+1307 chars]"
+        },
+        {
+            "source": {
+                "id": null,
+                "name": "Page Six"
+            },
+            "author": "Eileen Reslen",
+            "title": "NeNe Leakes gives health update on son Brentt two months after stroke - Page Six",
+            "description": "The “Real Housewives of Atlanta” alum proudly shared videos of her son learning to walk again and being released from the hospital after his health scare.",
+            "url": "https://pagesix.com/2022/11/24/nene-leakes-gives-health-update-on-son-brentt-after-stroke/",
+            "urlToImage": "https://pagesix.com/wp-content/uploads/sites/3/2022/11/nene-brentt-leakes-86.jpg?quality=75&strip=all&w=1200",
+            "publishedAt": "2022-11-24T18:07:00Z",
+            "content": "NeNe Leakes shared a happy update on her son Brentt Leakes’ health just in time for the holidays.\r\nThe former “Real Housewives of Atlanta” star, 54, shared on her Instagram Stories on Wednesday that … [+2097 chars]"
+        },
+        {
+            "source": {
+                "id": "fox-news",
+                "name": "Fox News"
+            },
+            "author": "Haris Alic",
+            "title": "Biden calls for more gun control before GOP takes House, says 'sick' to allow semi-automatic weapon sales - Fox News",
+            "description": "President Biden wants Congress to enact new gun control laws, including an assault weapons ban, before the GOP takes control of the House in January.",
+            "url": "https://www.foxnews.com/politics/biden-calls-more-gun-control-gop-takes-house-says-sick-allow-semi-automatic-weapon-sales",
+            "urlToImage": "https://static.foxnews.com/foxnews.com/content/uploads/2022/11/Joe-Biden-Nantucket-Thanksgiving.jpg",
+            "publishedAt": "2022-11-24T17:50:13Z",
+            "content": "President Biden said on Thursday that he would push Congress to enact new gun control laws before Republicans took control of the U.S. House of Representatives in January. \r\nBiden told reporters duri… [+2319 chars]"
+        },
+        {
+            "source": {
+                "id": "business-insider",
+                "name": "Business Insider"
+            },
+            "author": "Kali Hays",
+            "title": "Elon Musk fired dozens more Twitter staff the night before Thanksgiving — days after saying he was done with layoffs - Yahoo Finance",
+            "description": "The firings, of mostly engineers, came as a surprise inside Twitter, two people familiar with the company's actions told Insider.",
+            "url": "https://www.businessinsider.com/elon-musk-fires-dozens-more-twitter-staff-night-before-thanksgiving-2022-11",
+            "urlToImage": "https://i.insider.com/6286cce8577b8a001827b0ae?width=1200&format=jpeg",
+            "publishedAt": "2022-11-24T17:29:06Z",
+            "content": "Elon Musk fired several dozen Twitter employees overnight on Wednesday, most of whom were engineers, two people familiar with the company's actions told Insider.\r\nThe firings came as a surprise insid… [+1643 chars]"
+        },
+        {
+            "source": {
+                "id": null,
+                "name": "Variety"
+            },
+            "author": "Brent Lang",
+            "title": "Box Office: ‘Black Panther 2‘ Rules as Disney’s ‘Strange World’ Stumbles With $4.2 Million Opening Day - Variety",
+            "description": "“Black Panther: Wakanda Forever” continued to rule over the Thanksgiving holiday box office. Faced with only token opposition, the superhero sequel picked up $10 million on Wednesday. The Marvel and Disney release is on pace to earn roughly $63 million over t…",
+            "url": "https://variety.com/2022/film/news/box-office-black-panther-2-disney-strange-world-bombs-1235441630/",
+            "urlToImage": "https://variety.com/wp-content/uploads/2022/11/Strange-World-Review.jpg?w=1000&h=563&crop=1",
+            "publishedAt": "2022-11-24T16:51:00Z",
+            "content": "“Black Panther: Wakanda Forever” continued to rule over the Thanksgiving holiday box office. Faced with only token opposition, the superhero sequel picked up $10 million on Wednesday. The Marvel and … [+2781 chars]"
+        },
+        {
+            "source": {
+                "id": null,
+                "name": "YouTube"
+            },
+            "author": null,
+            "title": "Stephen A. & Mad Dog get heated previewing the Vikings vs. Patriots matchup | First Take - ESPN",
+            "description": null,
+            "url": "https://www.youtube.com/supported_browsers?next_url=https:%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DyODYrTyajv8",
+            "urlToImage": null,
+            "publishedAt": "2022-11-24T16:15:40Z",
+            "content": null
+        },
+        {
+            "source": {
+                "id": null,
+                "name": "The Moscow Times"
+            },
+            "author": "AFP",
+            "title": "Putin Warns of 'Grave Consequences' to Oil Price Caps - The Moscow Times",
+            "description": "Russian President Vladimir Putin warned that Western plans to introduce oil price caps could have \"grave consequences\" for energy markets, during a telephone conversation with Iraq's prime minister on Thursday.",
+            "url": "https://www.themoscowtimes.com/2022/11/24/putin-warns-of-grave-consequences-to-oil-price-caps-a79494",
+            "urlToImage": "https://static.themoscowtimes.com/image/og/b7/79494__b751142d1db64622c665bf40839bba13.jpg",
+            "publishedAt": "2022-11-24T16:11:39Z",
+            "content": "Russian President Vladimir Putin warned that Western plans to introduce oil price caps could have \"grave consequences\" for energy markets, during a telephone conversation with Iraq's prime minister o… [+991 chars]"
+        },
+        {
+            "source": {
+                "id": "the-verge",
+                "name": "The Verge"
+            },
+            "author": "Jennifer Pattison Tuohy",
+            "title": "Best Black Friday 2022 deals for smart home tech: speakers, cameras, robot vacs, and more - The Verge",
+            "description": "If you’re looking to level up your smart home during Black Friday, rest assured that you can grab deals on some smart lights, smart locks, security cameras, and smart speakers. Here, we’ve rounded the best smart home deals available.",
+            "url": "https://www.theverge.com/23475433/black-friday-2022-smart-home-tech-deals-cyber-monday",
+            "urlToImage": "https://cdn.vox-cdn.com/thumbor/KepJT3dS7pDWkAYiZyWnaXZBFxs=/0x0:2040x1360/1200x628/filters:focal(1020x680:1021x681)/cdn.vox-cdn.com/uploads/chorus_asset/file/23289974/jtuohy_220224_5047_0010_straightened.jpg",
+            "publishedAt": "2022-11-24T15:57:59Z",
+            "content": "The best Black Friday deals on smart home tech\r\nThe best Black Friday deals on smart home tech\r\n / Grab some great prices on smart speakers, smart displays, and Wi-Fi routers that will work with Matt… [+11438 chars]"
+        }
+    ]
+
+    constructor() {
+        super();
+        this.state = {
+            articles: this.articles,
+            page:1,
+            loading: false
+        }
+    }
+
+    async componentDidMount() {
+        // runs after the render() function
+        let newsurl = `https://newsapi.org/v2/top-headlines?domains=wsj.com&apiKey=0ec6f93a1089471fa6544bb41f50db18&category=${this.props.category}&pageSize=${this.props.pagesize}&country=us`;
+        let data = await fetch(newsurl);
+        this.setState({
+            loading: true
+        })
+        let parsedData = await data.json()
+        this.setState({ 
+            articles: parsedData.articles,
+            loading: false
+         })
+    }
+    handlePrevClick= async ()=>{
+        
+        console.log("Next");
+        let newsurl = `https://newsapi.org/v2/top-headlines?domains=wsj.com&apiKey=0ec6f93a1089471fa6544bb41f50db18&category=${this.props.category}&pageSize=${this.props.pagesize}&page=${this.state.page-1}&country=us`;
+        let data = await fetch(newsurl);
+        this.setState({
+            loading: true
+        })
+        this.setState({
+            loading: true
+        })
+        let parsedData = await data.json()
+        this.setState({ articles: parsedData.articles })
+        this.setState({
+            page: this.state.page -1,
+            loading: false
+        })
+    }
+    handleNextClick= async ()=>{
+        console.log("Next");
+        let newsurl = `https://newsapi.org/v2/top-headlines?domains=wsj.com&apiKey=0ec6f93a1089471fa6544bb41f50db18&category=${this.props.category}&pageSize=${this.props.pagesize}&page=${this.state.page+1}&country=us`;
+        let data = await fetch(newsurl);
+        this.setState({
+            loading:true
+        })
+        let parsedData = await data.json()
+        this.setState({ articles: parsedData.articles })
+        this.setState({
+            page: this.state.page +1,
+            loading: false
+        })
+    }
+    render() {
+        return (
+            <div>
+                <h1 className="my-4">NEWS UPDATES:</h1>
+                <div class="d-flex justify-content-between">
+                <button disabled={this.state.page<=1} type="button" class="btn btn-info" onClick={this.handlePrevClick}>Prev</button>
+                    <button type="button" class="btn btn-info" onClick={this.handleNextClick}>Next</button>
+                </div>
+                {this.state.loading && <Loader></Loader>}
+
+                <div className="row my-4">
+                    {/* map is like a forEach function */}
+                    {!this.state.loading && this.state.articles.map((element) => {
+                        // key to return multiple distinct elements
+                        return <div className="col-md-4" key={element.url}>
+                            <NewsItem title={element.title} description={element.description} imgurl={element.urlToImage} url={element.url} ></NewsItem>
+                        </div>
+                    })};
+
+                </div>
+
+                
+            </div>
+        )
+    }
+}
+
+export default News
